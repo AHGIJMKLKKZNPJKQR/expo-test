@@ -8,7 +8,11 @@
     "scheme": "expotest",
     "userInterfaceStyle": "automatic",
     "ios": {
-      "icon": "./assets/expo.icon"
+      "icon": "./assets/expo.icon",
+      "bundleIdentifier": "com.ahgijmklkkznpjkqr.expotest",
+      "infoPlist": {
+        "ITSAppUsesNonExemptEncryption": false
+      }
     },
     "android": {
       "adaptiveIcon": {
@@ -17,7 +21,8 @@
         "backgroundImage": "./assets/images/android-icon-background.png",
         "monochromeImage": "./assets/images/android-icon-monochrome.png"
       },
-      "predictiveBackGestureEnabled": false
+      "predictiveBackGestureEnabled": false,
+      "package": "com.ahgijmklkkznpjkqr.expotest"
     },
     "web": {
       "output": "static",
@@ -37,6 +42,19 @@
     "experiments": {
       "typedRoutes": true,
       "reactCompiler": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "eaff01c0-3774-4a4e-ad98-e7a346204a18"
+      }
+    },
+    "owner": "ahgijmklkkznpjkqr",
+    "runtimeVersion": {
+      "policy": "appVersion"
+    },
+    "updates": {
+      "url": "https://staging-u.expo.dev/eaff01c0-3774-4a4e-ad98-e7a346204a18"
     }
   }
 }
