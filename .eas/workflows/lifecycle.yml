@@ -1,0 +1,26 @@
+# Scenario 7: full lifecycle in one workflow - publish a rollout (10%), bump it
+# via update-rollout (50%), then revert it via update-rollback (revert-rollout
+# mode, since it is still a rollout group).
+name: Full lifecycle (rollout -> bump -> rollback)
+
+jobs:
+  publish_update:
+    type: update
+    params:
+      channel: development
+      platform: android
+      message: lifecycle test
+      rollout_percentage: 10
+
+  bump:
+    type: update-rollout
+    needs: [publish_update]
+    params:
+      update_group_id: ${{ needs.publish_update.outputs.first_update_group_id }}
+      rollout_percentage: 50
+
+  rollback:
+    type: update-rollback
+    needs: [bump]
+    params:
+      update_group_id: ${{ needs.bump.outputs.update_group_id }}

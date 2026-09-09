@@ -1,0 +1,22 @@
+# Scenario 6: signed rollback. Providing private_key_path switches update-rollback
+# off the background-job path and onto a VM/turtle job that runs eas-cli with
+# --private-key-path. Also exercises a custom rollback message.
+name: Rollback signed (VM path, custom message)
+
+jobs:
+  publish_update:
+    type: update
+    params:
+      channel: development
+      platform: android
+      message: signed rollback test
+      rollout_percentage: 100
+
+  rollback:
+    type: update-rollback
+    needs: [publish_update]
+    params:
+      update_group_id: ${{ needs.publish_update.outputs.first_update_group_id }}
+      message: reverting via signed rollback
+      # File path in the VM. Can also reference a file-type EAS env var as "$VAR_NAME".
+      private_key_path: /tmp/private/key.pem

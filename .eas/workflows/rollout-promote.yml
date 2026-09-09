@@ -1,0 +1,19 @@
+# Scenario 2: publish a rollout update at 10%, then promote it to everyone.
+# `update-rollout` with rollout_percentage omitted defaults to 100 (full promote).
+name: Rollout promote (default 100%)
+
+jobs:
+  publish_update:
+    type: update
+    params:
+      channel: development
+      platform: android
+      message: rollout promote test
+      rollout_percentage: 10
+
+  promote:
+    type: update-rollout
+    needs: [publish_update]
+    params:
+      update_group_id: ${{ needs.publish_update.outputs.first_update_group_id }}
+      # rollout_percentage omitted -> defaults to 100

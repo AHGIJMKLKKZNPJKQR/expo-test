@@ -1,0 +1,27 @@
+# Scenario 3: staged rollout across chained update-rollout jobs (10 -> 40 -> 100).
+# Verifies monotonic increases and that each step can consume the previous
+# update-rollout job's `update_group_id` output.
+name: Rollout staged (10 -> 40 -> 100)
+
+jobs:
+  publish_update:
+    type: update
+    params:
+      channel: development
+      platform: android
+      message: staged rollout test
+      rollout_percentage: 10
+
+  bump_to_40:
+    type: update-rollout
+    needs: [publish_update]
+    params:
+      update_group_id: ${{ needs.publish_update.outputs.first_update_group_id }}
+      rollout_percentage: 40
+
+  bump_to_100:
+    type: update-rollout
+    needs: [bump_to_40]
+    params:
+      update_group_id: ${{ needs.bump_to_40.outputs.update_group_id }}
+      rollout_percentage: 100

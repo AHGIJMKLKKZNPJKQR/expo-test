@@ -1,20 +1,18 @@
 {
   "expo": {
-    "extra": {
-      "eas": {
-        "projectId": "4e9adfae-7189-41d6-811a-7f587fee5ff7"
-      }
-    },
-    "owner": "testuser",
+    "owner": "test-org",
     "runtimeVersion": {
       "policy": "appVersion"
-    },
-    "updates": {
-      "url": "http://127.0.0.1:3000/expo-updates/4e9adfae-7189-41d6-811a-7f587fee5ff7"
     },
     "android": {
       "package": "com.testuser.expotest"
     },
-    "ios": {}
+    "ios": {},
+    "extra": {
+      "eas": {
+        "projectId": "73930c15-65f0-4847-ac60-f51944fd992b"
+      }
+    },
+    "slug": "test-app-org"
   }
 }

@@ -1,0 +1,19 @@
+# Scenario 5: roll back a fully-published (non-rollout) latest update with no
+# private key. update-rollback runs in `rollback` mode via a background job,
+# reverting to the previous group on the branch.
+name: Rollback latest full update (rollback mode, background)
+
+jobs:
+  publish_update:
+    type: update
+    params:
+      channel: development
+      platform: android
+      message: rollback latest test
+      rollout_percentage: 100
+
+  rollback:
+    type: update-rollback
+    needs: [publish_update]
+    params:
+      update_group_id: ${{ needs.publish_update.outputs.first_update_group_id }}

@@ -1,0 +1,19 @@
+# Scenario 4: roll back an in-progress rollout group with no private key.
+# The group has rollout percentages, so update-rollback runs in `revert-rollout`
+# mode via a background job (no VM).
+name: Rollback rollout group (revert-rollout, background)
+
+jobs:
+  publish_update:
+    type: update
+    params:
+      channel: development
+      platform: android
+      message: rollback rollout test
+      rollout_percentage: 10
+
+  rollback:
+    type: update-rollback
+    needs: [publish_update]
+    params:
+      update_group_id: ${{ needs.publish_update.outputs.first_update_group_id }}
