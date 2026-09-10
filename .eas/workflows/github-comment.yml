@@ -1,0 +1,12 @@
+name: GitHub Comment
+
+on:
+  pull_request:
+
+jobs:
+  github_comment:
+    name: GitHub Comment
+    type: github-comment
+    params:
+      message: "Testing GitHub comment"
+      build_ids: [typo]
