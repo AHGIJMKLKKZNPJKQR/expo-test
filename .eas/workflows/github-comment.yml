@@ -2,6 +2,7 @@ name: GitHub Comment
 
 on:
   pull_request:
+  pull_request_labeled:
 
 jobs:
   github_comment:
