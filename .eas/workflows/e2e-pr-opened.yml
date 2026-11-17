@@ -1,0 +1,9 @@
+name: E2E PR comment
+on:
+  pull_request:
+    types: [opened, synchronize]
+jobs:
+  comment:
+    type: github-comment
+    params:
+      message: 'e2e: pull_request workflow ran for ${{ github.sha }}'

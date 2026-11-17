@@ -1,6 +1,6 @@
 {
   "expo": {
-    "owner": "test-org",
+    "owner": "ahgijmklkkznpjkqr",
     "runtimeVersion": {
       "policy": "appVersion"
     },
@@ -10,9 +10,9 @@
     "ios": {},
     "extra": {
       "eas": {
-        "projectId": "893d619a-246a-4b9c-8adc-278183eda8cb"
+        "projectId": "eaff01c0-3774-4a4e-ad98-e7a346204a18"
       }
     },
-    "slug": "test-app-org"
+    "slug": "expo-test"
   }
 }

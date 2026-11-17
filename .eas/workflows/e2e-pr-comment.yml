@@ -1,0 +1,9 @@
+name: E2E PR comment trigger
+on:
+  pull_request_comment:
+    types: [created]
+jobs:
+  reply:
+    type: github-comment
+    params:
+      message: 'e2e: received a pull request comment'

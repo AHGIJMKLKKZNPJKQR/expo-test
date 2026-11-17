@@ -1,0 +1,10 @@
+name: E2E push checkout
+on:
+  push:
+    branches: ['main', 'e2e/*']
+jobs:
+  checkout:
+    name: Checkout
+    steps:
+      - uses: eas/checkout
+      - run: git log -1 --oneline && ls
